@@ -123,6 +123,20 @@ class TestsMobilVest(unittest.TestCase):
                       'http://online.mobilvest.ru/get/status.php',
                       body='''
                             {
+                                "4091297100348873330001" : "not_deliver"
+                            }
+                            ''')
+
+        sms_id = "4091297100348873330001"
+        statuses_json = self.mapi.get_status(sms_id)
+        self.assertIn(sms_id, statuses_json)
+
+    @responses.activate
+    def test_get_multiple_statuses(self):
+        responses.add(responses.GET,
+                      'http://online.mobilvest.ru/get/status.php',
+                      body='''
+                            {
                                 "4091297100348873330001" : "not_deliver",
                                 "4091297100348880230003" : "not_deliver"
                             }
@@ -153,6 +167,33 @@ class TestsMobilVest(unittest.TestCase):
         result_json = self.mapi.send_sms(phone, text, sender)
         self.assertIn(phone, result_json)
         self.assertIn('id_sms', result_json[phone])
+
+    @responses.activate
+    def test_send_multiple_sms(self):
+        responses.add(responses.GET,
+                      'http://online.mobilvest.ru/get/send.php',
+                      body='''
+                        {
+                            "79029134225": {
+                                "error": "0",
+                                "id_sms": "4092112510348380960001",
+                                "cost": "0.5",
+                                "count_sms": "1"
+                            },
+                            "79029134226": {
+                                "error": "0",
+                                "id_sms": "4092112510348380970001",
+                                "cost": "0.5",
+                                "count_sms": "1"
+                            }
+                        }''')
+
+        phones = ["79029134225", "79029134226"]
+        text = "Hello world!"
+        sender = "web.web"
+        result_json = self.mapi.send_sms(phones, text, sender)
+        for p in phones:
+            self.assertIn(p, result_json)
 
     @responses.activate
     def test_find_on_stop(self):
