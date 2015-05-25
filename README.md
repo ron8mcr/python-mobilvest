@@ -3,7 +3,7 @@ python-mobilvest
 ===============
 [![Code Health](https://landscape.io/github/ron8mcr/python-mobilvest/master/landscape.svg?style=flat)](https://landscape.io/github/ron8mcr/python-mobilvest/master)
 [![Build Status](https://travis-ci.org/ron8mcr/python-mobilvest.svg?branch=master)](https://travis-ci.org/ron8mcr/python-mobilvest)
-[![Coverage Status](https://coveralls.io/repos/ron8mcr/python-mobilvest/badge.svg)](https://coveralls.io/r/ron8mcr/python-mobilvest)
+[![Coverage Status](https://coveralls.io/repos/ron8mcr/python-mobilvest/badge.svg?branch=master)](https://coveralls.io/r/ron8mcr/python-mobilvest?branch=master)
 
 https://github.com/ron8mcr/python-mobilvest
 
