@@ -7,11 +7,10 @@ python:
 install: 
   - pip install requests
   - pip install responses
-  - pip install coveralls
-  - pip install pytest-cov
+  - pip install python-coveralls
 # command to run tests
-script: 
-  coverage run -m py.test
+script:
+  - py.test mobilvest/test_mobilvest.py --doctest-modules --pep8 coveralls -v --cov coveralls --cov-report term-missing
 
 after_success:
   coveralls
