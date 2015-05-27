@@ -16,7 +16,7 @@ setup(
     url='https://github.com/ron8mcr/python-mobilvest',
     packages=['mobilvest'],
     include_package_data=True,
-    install_requires=['setuptools'],
+    install_requires=['setuptools', 'requests'],
     test_requires=['responses'],
     zip_safe=False,
     classifiers=[
