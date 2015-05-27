@@ -9,6 +9,10 @@ class ServerResponsedWithError(Exception):
     pass
 
 
+class CantGetStatus(ServerResponsedWithError):
+    pass
+
+
 class MobilVestApi(object):
     ERRORS = {
         1: 'Не указана подпись',
@@ -95,6 +99,11 @@ class MobilVestApi(object):
             if response['error'] == 19:
                 return None
             msg = "{}".format(self.ERRORS[response['error']])
+            # в случае, если сервер ещё не обработал отправленное смс,
+            # возвращается ошибка, которую необходимо отличать
+            # от всех остальных
+            if response['error'] == 18:
+                raise CantGetStatus(msg)
             raise ServerResponsedWithError(msg)
         return response
 

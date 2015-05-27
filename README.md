@@ -57,7 +57,7 @@ if balance > 0.5:
         try:
             response = mapi.get_status(sms_id)
             break
-        except mobilvest.ServerResponsedWithError:
+        except mobilvest.CantGetStatus:
             sleep(1)
             continue
 
