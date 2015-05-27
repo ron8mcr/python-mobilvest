@@ -1,3 +1,3 @@
-from mobilvest import MobilVestApi, ServerResponsedWithError
+from mobilvest import MobilVestApi, ServerResponsedWithError, CantGetStatus
 
 VERSION = (0, 1, 0)
