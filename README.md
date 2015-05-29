@@ -24,7 +24,7 @@ Getting started
 ---------------
 * Install python-mobilvest:
 
-``pip install git+https://github.com/ron8mcr/python-mobilvest
+``pip install -e git+https://github.com/ron8mcr/python-mobilvest
 ``
 
 Examples
